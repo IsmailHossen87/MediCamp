@@ -168,7 +168,6 @@ const Navbar = () => {
           {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
     </div>
-        
       </div>
 
 

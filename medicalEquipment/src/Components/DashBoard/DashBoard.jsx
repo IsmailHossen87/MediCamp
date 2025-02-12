@@ -31,10 +31,10 @@ const DashBoard = () => {
       return (
         <>
         <div className="space-y-3 mt-2">
-        <NavLink to="/dashboard/userProfile" className={getLinkClasses}><FaUser />Analytics</NavLink>
-          <NavLink to="/dashboard/WishList" className={getLinkClasses}><FaHeart />Participant Profile</NavLink>
-          <NavLink to="/dashboard/propertyBought" className={getLinkClasses}><FaHome /> Registered Camp</NavLink>
-          <NavLink to="/dashboard/reviews" className={getLinkClasses}><FaStar />Payment History</NavLink>
+        <NavLink to="/dashboard/Analytics" className={getLinkClasses}><FaUser />Analytics</NavLink>
+          <NavLink to="/dashboard/ParticipantUser" className={getLinkClasses}><FaHeart />Participant Profile</NavLink>
+          <NavLink to="/dashboard/Registered" className={getLinkClasses}><FaHome /> Registered Camp</NavLink>
+          <NavLink to="/dashboard/Payment" className={getLinkClasses}><FaStar />Payment History</NavLink>
         </div>
         </>
       );

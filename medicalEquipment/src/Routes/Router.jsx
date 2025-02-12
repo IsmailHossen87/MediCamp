@@ -7,6 +7,9 @@ import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../Components/DashBoard/DashBoard";
+import ParticipentProfile from "../Components/UserDashBoard/ParticipentProfile";
+import RegisterCamp from "../Components/UserDashBoard/RegisterCamp";
+import Analaytics from "../Components/UserDashBoard/Analaytics";
 
 const Router = createBrowserRouter([
     {
@@ -30,6 +33,24 @@ const Router = createBrowserRouter([
     {
         path:'/dashboard',
         element:<PrivateRoute><DashBoard/></PrivateRoute>,
+        children:[
+            {
+                path:'ParticipantUser',
+                element:<ParticipentProfile/>
+            },
+            {
+                path:'Registered',
+                element:<RegisterCamp/>
+            },
+            {
+                path:'Payment',
+                element:<ParticipentProfile/>
+            },
+            {
+                path:'Analytics',
+                element:<Analaytics/>
+            }
+        ]
     },
 ])
 
