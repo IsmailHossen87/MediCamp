@@ -2,15 +2,13 @@
 import {  useState } from "react";
 import { FaBars, FaBuilding, FaClipboardList, FaHeart, FaHome, FaStar, FaUser } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useRole from "../../Hooks/useRole";
 
 
 const DashBoard = () => {
-//   const { user } = useAuth();
-//   const [role] = useRole();
-//   const [reviews] = UseReviews(user?.email);
-//   const [wishlist] = UseWishList();
+
+  const [role] = useRole();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-   const role = 'admin'
   
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 

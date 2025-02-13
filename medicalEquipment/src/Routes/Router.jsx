@@ -7,14 +7,13 @@ import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../Components/DashBoard/DashBoard";
-import ParticipentProfile from "../Components/UserDashBoard/ParticipentProfile";
 import RegisterCamp from "../Components/UserDashBoard/RegisterCamp";
 import Analaytics from "../Components/UserDashBoard/Analaytics";
 import AddCamp from "../Components/AdminDashBoard/AddCamp";
 import ManageCamp from "../Components/AdminDashBoard/ManageCamp";
 import ManageRegCamp from "../Components/AdminDashBoard/ManageRegCamp";
 import Alluser from "../Components/AdminDashBoard/Alluser";
-import AdminProfile from "../Components/AdminDashBoard/AdminProfile";
+import ReausableProfile from "../Shared/ReausableProfile";
 
 const Router = createBrowserRouter([
     {
@@ -40,17 +39,21 @@ const Router = createBrowserRouter([
         element:<PrivateRoute><DashBoard/></PrivateRoute>,
         children:[
             {
+                index:true,
+                element:<ReausableProfile/>
+            },
+            {
                 path:'ParticipantUser',
-                element:<ParticipentProfile/>
+                element:<ReausableProfile/>
             },
             {
                 path:'Registered',
                 element:<RegisterCamp/>
             },
-            {
-                path:'Payment',
-                element:<ParticipentProfile/>
-            },
+            // {
+            //     path:'Payment',
+            //     element:<ParticipentProfile/>
+            // },
             {
                 path:'Analytics',
                 element:<Analaytics/>
@@ -58,7 +61,7 @@ const Router = createBrowserRouter([
             // admin
             {
                 path:'adminProfile',
-                element:<AdminProfile/>
+                element:<ReausableProfile/>
             },
             {
                 path:'AddCamp',

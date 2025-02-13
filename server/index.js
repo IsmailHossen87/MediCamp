@@ -39,6 +39,11 @@ async function run() {
 
   app.post('/user',async(req,res)=>{
     const user = req.body 
+    const filter ={email: user.email}
+    const exisEmail = await userCollection.findOne(filter)
+    if(exisEmail){
+      return res.send(exisEmail)
+    }
     const result = await userCollection.insertOne(user)
     res.send(result)
   })

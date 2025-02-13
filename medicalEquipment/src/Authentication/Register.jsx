@@ -1,16 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import Swal from "sweetalert2";
-// import Lottie from "lottie-react";
 // import registerAnimation from "../assets/lotte/register.json";
 import useAuth from "../Hooks/useAuth";
 import SocialLogin from "./SocialLogin";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
 
-  // const axiosSecure = UseAxiosSecure();
-  // const navigate = useNavigate();
+  const axiosSecure = UseAxiosSecure();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,27 +18,27 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password).then((res) => {
+    createUser(data.email, data.password)
+    .then((res) => {
       updateUserProfile(data.name, data.photoURL)
 
       .then(() => {
         const userInfo = { name: data.name, email: data.email, role:'user'};
         console.log(userInfo)
 
-        // axiosSecure.post("/user", userInfo).then((res) => {
-        //   console.log("res",res)
-        //   if (res.data.insertedId) {
-        //     reset();
-        //     Swal.fire({
-        //       position: "top-center",
-        //       icon: "success",
-        //       title: "Your sign-up has been saved",
-        //       showConfirmButton: false,
-        //       timer: 1500,
-        //     });
-        //     navigate("/");
-        //   }
-        // });
+        axiosSecure.post("/user", userInfo).then((res) => {
+          console.log("res",res)
+          if (res.data.insertedId) {
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "Your sign-up has been saved",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          }
+        });
         
       });
     });

@@ -4,20 +4,17 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from "sweetalert2";
 import userImg from "../assets/user.png";
-
-// import useAdmin from "../Hooks/useAdmin";
 import { FaUserMd } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
+import useRole from "../Hooks/useRole";
 
-// import useCart from "../../../Hooks/useCart";
 
 
 const Navbar = () => {
   const { logOut, user, loading } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  // const [cart] = useCart();
-  // const [isAdmin] = useAdmin();
+  const [role] = useRole()
 
 
   const handleSignOut = () => {
@@ -88,10 +85,7 @@ const Navbar = () => {
 
       {/* &&isAdmin */}
       {
-        user  && <li><Link to='/dashboard/adminHome'>Dashboard</Link></li>
-      }
-      {
-        user  && <li><Link to={`/dashboard/participants/${user?.email}`}>Dashboard</Link></li>
+        role === "admin"? <li><Link to='/dashboard/adminProfile'>Dashboard</Link></li> : <li><Link to='/dashboard/ParticipantUser'>Dashboard</Link></li>
       }
     </>
   );
