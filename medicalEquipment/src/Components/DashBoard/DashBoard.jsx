@@ -10,7 +10,7 @@ const DashBoard = () => {
 //   const [reviews] = UseReviews(user?.email);
 //   const [wishlist] = UseWishList();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-   const role = 'user'
+   const role = 'admin'
   
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
@@ -20,10 +20,10 @@ const DashBoard = () => {
         <>
           <div className="space-y-3 mt-2">
           <NavLink to="/dashboard/adminProfile" className={getLinkClasses}><FaUser /> Admin Profile</NavLink>
-          <NavLink to="/dashboard/adminManage" className={getLinkClasses}><FaClipboardList /> Manage Properties</NavLink>
-          <NavLink to="/dashboard/manageRole" className={getLinkClasses}><FaUser /> Manage Role</NavLink>
-          <NavLink to="/dashboard/adminReview" className={getLinkClasses}><FaStar /> Manage Reviews</NavLink>
-          <NavLink to="/dashboard/advertiseProperty" className={getLinkClasses}><FaStar /> Advertise Property</NavLink>
+          <NavLink to="/dashboard/AddCamp" className={getLinkClasses}><FaClipboardList />Add Camp</NavLink>
+          <NavLink to="/dashboard/ManageCamp" className={getLinkClasses}><FaUser /> Manage Camp</NavLink>
+          <NavLink to="/dashboard/ManageRegCamp" className={getLinkClasses}><FaStar /> Manage Reg-Camp</NavLink>
+          <NavLink to="/dashboard/Alluser" className={getLinkClasses}><FaStar />All User</NavLink>
           </div>
         </>
       );

@@ -1,9 +1,7 @@
-import React from 'react';
-
 const AdminProfile = () => {
     return (
         <div>
-            <h3>Profile</h3>
+            <h3>Admin Profile</h3>
         </div>
     );
 };

@@ -42,9 +42,14 @@ async function run() {
     const result = await userCollection.insertOne(user)
     res.send(result)
   })
-  app.get('/allUser',async(req,res)=>{
-    const result = await userCollection.find().toArray()
-    res.send(result)
+  app.get('/user/role/:email',async(req,res)=>{
+    const email = req.params.email
+    const filter = {email:email}
+    const user = await userCollection.findOne(filter)
+    if(!user){
+      return res.status(404).send({message:'user not found'})
+    }
+    res.send({role:user.role || 'user'})
   })
   } finally {
     // Ensures that the client will close when you finish/error

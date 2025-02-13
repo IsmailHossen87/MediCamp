@@ -10,6 +10,11 @@ import DashBoard from "../Components/DashBoard/DashBoard";
 import ParticipentProfile from "../Components/UserDashBoard/ParticipentProfile";
 import RegisterCamp from "../Components/UserDashBoard/RegisterCamp";
 import Analaytics from "../Components/UserDashBoard/Analaytics";
+import AddCamp from "../Components/AdminDashBoard/AddCamp";
+import ManageCamp from "../Components/AdminDashBoard/ManageCamp";
+import ManageRegCamp from "../Components/AdminDashBoard/ManageRegCamp";
+import Alluser from "../Components/AdminDashBoard/Alluser";
+import AdminProfile from "../Components/AdminDashBoard/AdminProfile";
 
 const Router = createBrowserRouter([
     {
@@ -49,7 +54,29 @@ const Router = createBrowserRouter([
             {
                 path:'Analytics',
                 element:<Analaytics/>
-            }
+            },
+            // admin
+            {
+                path:'adminProfile',
+                element:<AdminProfile/>
+            },
+            {
+                path:'AddCamp',
+                element:<AddCamp/>
+            },
+            {
+                path:'ManageCamp',
+                element:<ManageCamp/>
+            },
+            {
+                path:'ManageRegCamp',
+                element:<ManageRegCamp/>
+            },
+            {
+                path:'Alluser',
+                element:<Alluser/>
+            },
+
         ]
     },
 ])
