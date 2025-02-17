@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { FaLandmark } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/UseAxiosPublic";
 
 const AddCamp = () => {
   const axiosPublic = useAxiosPublic();
@@ -32,8 +32,8 @@ const AddCamp = () => {
     if (res.success) {
       const campData = {
         name: data.name,
-        campFees:data.campFees,
-        dataTime:data.datetime,
+        campFees: parseFloat(data.campFees),
+        dateTime:data.datetime,
         location: data.location,
         Healthcare:data.Healthcare,
         description:data.message,

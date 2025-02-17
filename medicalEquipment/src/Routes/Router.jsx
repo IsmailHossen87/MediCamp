@@ -14,6 +14,7 @@ import ManageCamp from "../Components/AdminDashBoard/ManageCamp";
 import ManageRegCamp from "../Components/AdminDashBoard/ManageRegCamp";
 import Alluser from "../Components/AdminDashBoard/Alluser";
 import ReausableProfile from "../Shared/ReausableProfile";
+import UpdateCamp from "../Components/AdminDashBoard/UpdateCamp";
 
 const Router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ const Router = createBrowserRouter([
             {
                 path:'ManageCamp',
                 element:<ManageCamp/>
+            },
+            {
+                path:'updateCamp/:id',
+                element:<UpdateCamp/>
             },
             {
                 path:'ManageRegCamp',

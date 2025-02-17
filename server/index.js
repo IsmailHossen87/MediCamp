@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-const { MongoClient, ServerApiVersion } = require('mongodb')
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 const app = express()
 const port = process.env.PORT || 5000
 
@@ -16,7 +16,6 @@ app.use(express.json())
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.hg2ad.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-console.log(uri)
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -68,6 +67,38 @@ async function run() {
     const result = await CampCollecion.find(filter).toArray()
     res.send(result)
   })
+  // delete item
+  app.delete('/deleteItem/:id',async(req,res)=>{
+    const id = req.params.id 
+    const filter = {_id:new ObjectId(id)}
+    const result = await CampCollecion.deleteOne(filter)
+    res.send(result)
+  })
+  app.get('/details/:id',async(req,res)=>{
+    const id = req.params.id 
+    const filter = {_id:new ObjectId(id)}
+    const result = await CampCollecion.findOne(filter)
+    res.send(result)
+  })
+  // UPDATE ONE DATA
+  app.patch("/updateData/:id", async (req, res) => {
+    const item = req.body;
+    const id = req.params.id;
+    const filter = { _id: new ObjectId(id) };
+    const update = {
+      $set: {
+        name: item.name,
+        campFees: item.campFees,
+        dateTime: item.datetime,
+        location: item.location,
+        Healthcare: item.Healthcare,
+        description: item.message,
+        image: item.image
+      },
+    };
+    const result = await CampCollecion.updateOne(filter, update);
+    res.send(result);
+  });
   } finally {
     // Ensures that the client will close when you finish/error
   }
