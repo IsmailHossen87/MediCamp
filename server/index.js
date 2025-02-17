@@ -35,6 +35,7 @@ async function run() {
     )
 
     const userCollection = client.db('MediCamp').collection('users');
+    const CampCollecion = client.db('MediCamp').collection('allCamping');
 
 
   app.post('/user',async(req,res)=>{
@@ -55,6 +56,17 @@ async function run() {
       return res.status(404).send({message:'user not found'})
     }
     res.send({role:user.role || 'user'})
+  })
+  app.post('/addCamp',async(req,res)=>{
+    const data = req.body 
+    const result = await CampCollecion.insertOne(data)
+    res.send(result)
+  })
+  app.get('/manageCamp/:email',async(req,res)=>{
+    const email = req.params.email 
+    const filter ={AdminEmail : email}
+    const result = await CampCollecion.find(filter).toArray()
+    res.send(result)
   })
   } finally {
     // Ensures that the client will close when you finish/error
